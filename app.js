@@ -18,7 +18,28 @@ const seatingArrangement = (seats, passengers) => {
         aisle = false;
         window = true;
       }
-    } 
+    } else if (window) {
+      if (seats[row][column] === 0) {
+        seats[row][column] = 1;
+        seatedPassengers++;
+      }
+      column++;
+      if (column === seats[row].length) {
+        column = 0;
+        window = false;
+        center = true;
+      }
+    } else if (center) {
+      if (seats[row][column] === 0) {
+        seats[row][column] = 1;
+        seatedPassengers++;
+      }
+      column++;
+      if (column === seats[row].length) {
+        column = 0;
+        row++;
+      }
+    }
     if (row === seats.length) {
       break;
     }
