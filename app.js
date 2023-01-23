@@ -27,4 +27,4 @@ const seatingArrangement = (seats, passengers) => {
   }
 };
 
-seatingArrangement([[3, 2], [4, 3], [2, 3], [3, 4]], 36);
+seatingArrangement([[3, 2], [4, 3], [2, 3], [3, 4]], 30);

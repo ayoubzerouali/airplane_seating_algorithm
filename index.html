@@ -14,12 +14,31 @@
         width: 12px;
         }
         .cell {
-        width: 50;
         background-color: red;
         border:  solid 1px yellow ;
         height: 12px;
-        width: 12px;
+        width: 50px;
         }
+        
+
+
+/* color the aisle seats */
+.row:nth-child(even) .cell:first-child,
+.row:nth-child(even) .cell:last-child {
+  background-color: #f1c40f;
+}
+
+/* color the window seats */
+.row:nth-child(odd) .cell:first-child,
+.row:nth-child(odd) .cell:last-child {
+  background-color: #3498db;
+}
+
+/* color the center seats */
+.row:nth-child(even) .cell:nth-child(2),
+.row:nth-child(odd) .cell:nth-child(2) {
+  background-color: #2ecc71;
+}
     </style>
 </head>
 <body>
