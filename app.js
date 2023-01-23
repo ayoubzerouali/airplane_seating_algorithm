@@ -1,50 +1,30 @@
-const seatingArrangement = (seats, passengers) => {
-  let row = 0;
-  let column = 0;
-  let aisle = true;
-  let window = false;
-  let center = false;
-  let seatedPassengers = 0;
 
-  while (seatedPassengers < passengers) {
-    if (aisle) {
-      if (seats[row][column] === 0) {
-        seats[row][column] = 1;
+const seatingArrangement = (seats, passengers) => {
+  let seatedPassengers = 0;
+  let rows = 0;
+  let columns = 0;
+  for (let i = 0; i < seats.length; i++) {
+    columns = seats[i][0];
+    rows = seats[i][1];
+    for (let j = 0; j < rows; j++) {
+      // create a row element
+      const row = document.createElement('div');
+      row.classList.add("row");
+      for (let k = 0; k < columns; k++) {
+        // create a cell element
+        const cell = document.createElement('div');
+        cell.classList.add("cell");
+        if (seatedPassengers >= passengers) {
+          break;
+        }
+        // add the cell to the row
+        row.appendChild(cell);
         seatedPassengers++;
       }
-      column++;
-      if (column === seats[row].length) {
-        column = 0;
-        aisle = false;
-        window = true;
-      }
-    } else if (window) {
-      if (seats[row][column] === 0) {
-        seats[row][column] = 1;
-        seatedPassengers++;
-      }
-      column++;
-      if (column === seats[row].length) {
-        column = 0;
-        window = false;
-        center = true;
-      }
-    } else if (center) {
-      if (seats[row][column] === 0) {
-        seats[row][column] = 1;
-        seatedPassengers++;
-      }
-      column++;
-      if (column === seats[row].length) {
-        column = 0;
-        row++;
-      }
-    }
-    if (row === seats.length) {
-      break;
-    }
+      // add the row to the HTML document
+      document.body.appendChild(row);
+    } 
   }
-  return seats;
 };
 
-console.log(seatingArrangement([[3, 4], [4, 5], [2, 3], [3, 4]], 20));
+seatingArrangement([[3, 2], [4, 3], [2, 3], [3, 4]], 36);
